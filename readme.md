@@ -187,7 +187,6 @@ This provides:
 
 - Python
 - YOLOv5
-- TensorFlow Lite (INT8)
 - ONNX
 - OpenCV
 - SQLite
@@ -227,15 +226,7 @@ Or use the provided requirements file if available.
 
 GUI Version:
 
-- Run `app_gui.py`
-
-INT8 Optimized Version (Recommended for Raspberry Pi):
-
-- Run `app_gui_int8.py`
-
-CLI Version:
-
-- Run `app.py`
+- Run `[ython app_gui.py`
 
 ---
 
@@ -277,8 +268,6 @@ This modular design ensures:
 - best.onnx
 - road_data.db
 - road6.mp4
-- models/
-- utils/
 
 This repository represents the **Edge Intelligence Layer** of the full RoadGuard ecosystem.
 
@@ -288,10 +277,8 @@ This repository represents the **Edge Intelligence Layer** of the full RoadGuard
 
 - Automatic SQLite → MongoDB synchronization
 - Real-time anomaly streaming
-- SMS/Email alerts for critical zones
 - Predictive road degradation analytics
 - GPS-based geo-tagging
-- Cloud deployment & CI/CD integration
 - Municipal command center dashboard
 
 ---
