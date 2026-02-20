@@ -95,6 +95,7 @@ They are responsible for:
 - Fetching anomaly data using spatial queries
 - Applying threshold-based color coding
 - Dynamically updating the viewport data
+- The Backend File is empty where the files are added globally (Server.js and Seed.js).
 
 All heavy AI computation and anomaly detection logic are **not handled by the web stack**, but rather by the edge device (Raspberry Pi).
 
