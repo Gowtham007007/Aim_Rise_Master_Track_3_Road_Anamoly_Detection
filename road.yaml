@@ -1,0 +1,16 @@
+path: C:/Users/karth/road_anomaly_laptop/datasetnew
+
+train: images/train
+val: images/val
+
+nc: 8
+
+names:
+  0: longitudinal_crack
+  1: transverse_crack
+  2: alligator_crack
+  3: pothole
+  4: repair
+  5: other
+  6: barrier
+  7: cone
