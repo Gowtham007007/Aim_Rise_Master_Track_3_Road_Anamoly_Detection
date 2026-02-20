@@ -1,130 +1,311 @@
-🚧 RoadGuard AI – Edge-Based Road Anomaly Detection System
-An AI-powered Raspberry Pi system for detecting road cracks and potholes to improve road safety through automated monitoring.
+# 🚧 RoadGuard AI - Anamoly Detection Using Raspberry Pi
 
-This repository contains the Edge Detection Module of the RoadGuard AI system, built using YOLOv5 and optimized for Raspberry Pi deployment.
+## Intelligent Road Crack & Pothole Detection System
 
-🛠️ Tech Stack
-🧠 Edge AI (This Repository)
-🐍 Python
-🧠 YOLOv5 (Custom-trained)
-📦 TensorFlow Lite (INT8 optimized model)
-🧮 ONNX model
-💾 SQLite (road_data.db)
-🍓 Raspberry Pi
-🌐 Central Dashboard (Planned / Integrated System)
-⚛️ React.js (Frontend)
-🚀 Express.js (Backend API)
-🍃 MongoDB (Geospatial Database)
-🗺️ MapTiler SDK (Map Visualization)
-✨ Key Features
-🎯 1. Real-Time Road Anomaly Detection
-Detects potholes and cracks from video feed (road6.mp4 or camera input)
-Uses optimized:
-best-int8.tflite (Edge deployment)
-best.onnx
-Designed for low-power Raspberry Pi inference
-💾 2. Local Database Logging
-Detections are stored in:
+**Transforming road safety through edge-based AI detection and geospatial visualization.**
 
-road_data.db (SQLite)
-Each entry typically includes:
+RoadGuard AI is a smart infrastructure monitoring system that leverages **Raspberry Pi-powered computer vision** to automatically detect potholes and road cracks. The system combines **edge AI processing**, **structured anomaly storage**, and **map-based visualization architecture** to enable proactive road maintenance and data-driven municipal decisions.
 
-Detection type
-Confidence score
-Timestamp
-(Optional) Location data
-This allows offline-first deployment in remote areas.
+Instead of manual inspections, RoadGuard AI delivers automated, scalable, and intelligent road health monitoring.
 
-🌍 3. Centralized System Integration (Architecture Vision)
-In the complete RoadGuard AI system:
+---
 
-Raspberry Pi detects anomalies.
-Data is pushed to MongoDB.
-Express API performs spatial queries.
-React + MapTiler visualizes anomalies.
-📊 Threshold-Based Visualization Logic (Dashboard Layer)
-When integrated with the central system, regions are color-coded:
+# 🌍 Why RoadGuard AI?
 
-Status	Anomaly Count	Color	Action
-Critical	≥ 20	🔴 Red	Immediate repair
-Warning	10 – 19	🟡 Yellow	Schedule maintenance
-Healthy	< 10	🟢 Green	No urgent action
-🌍 Spatial Querying (MongoDB – Dashboard Layer)
-The central server fetches only anomalies inside the visible map viewport:
+Poor road conditions cause:
 
-{
-  location: {
-    $geoWithin: {
-      $geometry: {
-        type: "Polygon",
-        coordinates: [...]
-      }
-    }
-  }
-}
-✔️ Efficient
+- Vehicle damage
+- Increased accident risk
+- Higher maintenance costs
+- Delayed infrastructure response
 
-✔️ Scalable
+RoadGuard AI solves this by:
 
-✔️ Real-time viewport updates
+✔ Automatically detecting road anomalies
 
-⚙️ Installation Guide (Edge Module – This Repository)
-1️⃣ Clone the Repository
-git clone https://github.com/your-username/roadguard-ai.git
-cd roadguard-ai
-2️⃣ Install Dependencies
-Create virtual environment (recommended):
+✔ Logging structured damage data
 
-python -m venv venv
-source venv/bin/activate  # Linux / Pi
-Install requirements (if using YOLOv5 standard setup):
+✔ Enabling geospatial analytics
 
-pip install -r requirements.txt
-If not available, install manually:
+✔ Prioritizing repair using threshold-based logic
 
-pip install torch torchvision opencv-python numpy sqlite3
-3️⃣ Run Detection
-GUI Version
-python app_gui.py
-INT8 Optimized Version (Raspberry Pi)
-python app_gui_int8.py
-CLI Version
-python app.py
-🏗️ System Architecture (Complete Vision)
-[ Raspberry Pi ]
-      ↓
-[ YOLOv5 Detection ]
-      ↓
-[ SQLite (Local) ]
-      ↓ (Sync)
-[ MongoDB (Cloud) ]
-      ↓
-[ Express API ]
-      ↓
-[ React Dashboard + MapTiler ]
-📂 Project Structure
-pothole_project/
-│
-├── app.py
-├── app_gui.py
-├── app_gui_int8.py
-├── best-int8.tflite
-├── best.onnx
-├── road_data.db
-├── road6.mp4
-├── models/
-├── utils/
-🚀 Future Scope
-🔄 Auto-sync SQLite → MongoDB
-📡 Real-time anomaly streaming
-📲 SMS alerts to municipal authorities
-🧠 Predictive road degradation analytics
-☁️ Cloud deployment with scalable APIs
-📍 GPS tagging from Raspberry Pi module
-🎯 Project Goal
-To build a scalable, intelligent, edge-powered road monitoring system that:
+---
 
-Detects potholes automatically
-Logs structured anomaly data
-Integrates with smart dashboards
-Enables data-driven road maintenance
+# ✨ Core Capabilities
+
+## 🧠 1. Edge-Based AI Detection
+
+- Runs on **Raspberry Pi**
+- Uses **YOLOv5 custom-trained model**
+- Supports optimized inference:
+    - TensorFlow Lite (INT8)
+    - ONNX
+- Processes video input (`road6.mp4`) or live camera feed
+- Detects:
+    - Potholes
+    - Surface cracks
+
+Designed for **low-power, real-world deployment**.
+
+---
+
+## 💾 2. Structured Anomaly Logging
+
+All detections are stored locally in:
+
+`road_data.db` (SQLite)
+
+Each record includes:
+
+- Anomaly type
+- Confidence score
+- Timestamp
+- Optional location metadata
+
+This enables:
+
+- Offline-first operation
+- Lightweight edge storage
+- Future synchronization to cloud database
+
+---
+
+## 🗺️ 3. Intelligent Dashboard Architecture (System Vision)
+
+In the complete RoadGuard ecosystem:
+
+Raspberry Pi → MongoDB → Express API → React + MapTiler
+
+The dashboard:
+
+- Fetches anomalies within the visible map viewport
+- Uses MongoDB `$geoWithin` for spatial filtering
+- Dynamically updates based on bounding box
+- Color-codes regions using severity thresholds
+
+---
+
+## 🖥️ Frontend & Backend Usage Clarification
+
+The **React (Frontend)** and **Express (Backend)** components are utilized exclusively for **map-based visualization and geospatial data integration**.
+
+They are responsible for:
+
+- Rendering the interactive MapTiler dashboard
+- Fetching anomaly data using spatial queries
+- Applying threshold-based color coding
+- Dynamically updating the viewport data
+
+All heavy AI computation and anomaly detection logic are **not handled by the web stack**, but rather by the edge device (Raspberry Pi).
+
+This ensures clear separation between:
+
+- 🧠 Edge Intelligence Layer (Detection)
+- 🌐 Visualization Layer (Map Dashboard)
+
+---
+
+## 🧠 Onboard Processing with Tkinter GUI (Raspberry Pi)
+
+The core detection system runs entirely within the **Python environment on the Raspberry Pi**.
+
+A **Tkinter-based GUI framework** is implemented for:
+
+- Displaying real-time detection results
+- Showing bounding boxes around potholes/cracks
+- Running inference locally on the Pi
+- Providing a lightweight monitoring interface
+
+All model inference and anomaly processing are performed **on-device (edge processing)**, ensuring:
+
+- Low latency
+- Reduced cloud dependency
+- Offline operability
+- Energy-efficient deployment
+
+This design enables fully autonomous onboard processing without requiring continuous server connectivity.
+
+---
+
+
+# 🎥 System Demonstration
+
+After understanding the system architecture, you can now see it in action:
+
+📺 **Watch the full working demo here:**
+
+https://drive.google.com/file/d/13lElNk2jI319pKpVxEmzJ7Kc1zEP1DqL/view?usp=sharing
+
+This demo showcases:
+
+- Real-time detection
+- Bounding box predictions
+- Model performance
+- GUI interaction
+- Edge-based execution
+
+---
+
+# 📊 Threshold-Based Severity Logic
+
+When integrated with the web dashboard, regions are categorized as:
+
+🔴 **Critical (≥ 20 anomalies)**
+
+Immediate maintenance required.
+
+🟡 **Warning (10 – 19 anomalies)**
+
+Monitor and schedule repair.
+
+🟢 **Healthy (< 10 anomalies)**
+
+No urgent intervention required.
+
+This threshold-based visualization enables smart repair prioritization.
+
+---
+
+# 🌐 Spatial Querying Mechanism
+
+To ensure performance and scalability, the dashboard fetches only the anomalies inside the current map viewport using MongoDB’s geospatial operator:
+
+`$geoWithin`
+
+This provides:
+
+- Efficient data retrieval
+- Smooth zoom and pan updates
+- Reduced server load
+- Real-time interactive experience
+
+---
+
+# 🛠️ Technology Stack
+
+## Edge Module (Current Repository)
+
+- Python
+- YOLOv5
+- TensorFlow Lite (INT8)
+- ONNX
+- OpenCV
+- SQLite
+- Raspberry Pi
+
+## Centralized Dashboard (Extended Architecture)
+
+- React.js
+- Express.js
+- MongoDB (Geospatial indexing)
+- MapTiler SDK
+
+---
+
+# ⚙️ Installation & Execution
+
+## 1️⃣ Clone the Repository
+
+Download or clone the project to your system or Raspberry Pi.
+
+## 2️⃣ Create a Python Virtual Environment (Recommended)
+
+Set up a virtual environment to isolate dependencies.
+
+## 3️⃣ Install Dependencies
+
+Install required packages such as:
+
+- torch
+- torchvision
+- opencv-python
+- numpy
+
+Or use the provided requirements file if available.
+
+## 4️⃣ Run the Application
+
+GUI Version:
+
+- Run `app_gui.py`
+
+INT8 Optimized Version (Recommended for Raspberry Pi):
+
+- Run `app_gui_int8.py`
+
+CLI Version:
+
+- Run `app.py`
+
+---
+
+# 🏗️ Complete System Architecture
+
+Raspberry Pi (YOLO Detection)
+
+↓
+
+SQLite Local Storage
+
+↓ (Sync Layer)
+
+MongoDB (Cloud Geospatial Database)
+
+↓
+
+Express API
+
+↓
+
+React Dashboard + MapTiler Visualization
+
+This modular design ensures:
+
+- Scalability
+- Maintainability
+- Performance efficiency
+- Real-world deployability
+
+---
+
+# 📂 Repository Structure Overview
+
+- app.py
+- app_gui.py
+- app_gui_int8.py
+- best-int8.tflite
+- best.onnx
+- road_data.db
+- road6.mp4
+- models/
+- utils/
+
+This repository represents the **Edge Intelligence Layer** of the full RoadGuard ecosystem.
+
+---
+
+# 🚀 Future Enhancements
+
+- Automatic SQLite → MongoDB synchronization
+- Real-time anomaly streaming
+- SMS/Email alerts for critical zones
+- Predictive road degradation analytics
+- GPS-based geo-tagging
+- Cloud deployment & CI/CD integration
+- Municipal command center dashboard
+
+---
+
+# 🎯 Vision
+
+RoadGuard AI aims to create a **scalable, intelligent, and automated road monitoring system** that replaces reactive maintenance with proactive, data-driven infrastructure management.
+
+By combining:
+
+Edge AI
+
+Geospatial Intelligence
+
+Interactive Web Visualization
+
+RoadGuard AI lays the foundation for smarter, safer cities.
